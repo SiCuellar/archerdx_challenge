@@ -4,21 +4,25 @@ require "find"
 class FastqReader
   attr_reader :directory
 
+  def initialize(directory)
+    @directory = directory
+    # binding.pry
+  end
+
   def select_directory
-    dic_name = gets.chomp
-    # path = File.absolute_path(dic_name)
-    # absolute_path no returning full file path
-    files = Dir.glob("#{dic_name}/*.fastq")
-
+    files = Dir.glob("#{@directory}/*.fastq")
+    # binding.pry
     files.each do |file|
-      binding.pry
+      print file
     end
-
-    # Dir.glob("#{path}/*.fastq") do |fastq_file|
-    #   binding.pry
-    # end
   end
 end
+
+
+
+# Dir.glob("#{path}/*.fastq") do |fastq_file|
+#   binding.pry
+# end
 
 # dic_name = gets.chomp
 # path = "archerdx_challenge/ruby/fastq_reader/lib/fastq_directories/#{dic_name}"
