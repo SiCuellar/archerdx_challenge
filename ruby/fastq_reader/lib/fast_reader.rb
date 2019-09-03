@@ -6,11 +6,11 @@ class FastqReader
 
   def initialize(directory)
     @directory = directory
-    @directory_data = []
   end
 
   def select_directory_files
     files = Dir.glob("#{@directory}/*.fastq")
+    binding.pry
   end
 
   def number_of_sequences
@@ -18,8 +18,7 @@ class FastqReader
       file_data = File.readlines(file)
       num_seq = file_data.each_slice(4).to_a.count
     end
-    # binding.pry
-    @directory_data << select_directory_files.zip(num_seq_list)
+    directory_data = select_directory_files.zip(num_seq_list)
   end
 
   def percent_seq_over_30
@@ -38,6 +37,15 @@ class FastqReader
       num_seq = sequences.count
       percent = above_30_count.to_f/num_seq.to_f * 100.0
     end
-    @directory_data << select_directory_files.zip(percents_list)
+    directory_data = select_directory_files.zip(percents_list)
+  end
+
+  def data_display
+    percent_seq_over_30.each do |data|
+      puts("Directory Name: #{data.first.split("/").first}")
+      puts("File Name: #{data.first.split("/").last}")
+      puts("Percent of sequences over 30 nucleotides long: #{data.last}")
+      puts("\n")
+    end
   end
 end
