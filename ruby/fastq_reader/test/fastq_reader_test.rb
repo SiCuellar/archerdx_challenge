@@ -1,11 +1,13 @@
-require_relative "fast_reader"
+require "./lib/fast_reader"
 require "minitest/autorun"
 require "minitest/pride"
+
 
 class FastqReaderTest < Minitest::Test
 
   def setup
-    @fastq = FastqReader.new
+    path = ("./fastq_directories/read1/*")
+    @fastq = FastqReader.new()
   end
 
   def test_it_exists
@@ -13,7 +15,7 @@ class FastqReaderTest < Minitest::Test
   end
 
   def test_it_can_find_a_FastQ_file_in_directory
-    
+    assert_equal "Sample_R1.fastq", @fastq.select_directory
   end
 
   # Recursively find all FASTQ files in a directory
