@@ -26,7 +26,13 @@ class FastqReaderTest < Minitest::Test
   def test_it_can_return_numer_of_sequences_in_partucular_file
     dir_name = ("read3")
     fastq = FastqReader.new(dir_name)
-    assert_equal 2, fastq.number_of_sequences
+    assert_equal [["read3/sample_2.fastq", 2], ["read3/sample.fastq", 2]], fastq.number_of_sequences
+  end
+
+  def test_it_can_return_percentage_of_sequences_over_30
+    dir_name = ("read3")
+    fastq = FastqReader.new(dir_name)
+    assert_equal , fastq.number_of_sequences
   end
 
 
