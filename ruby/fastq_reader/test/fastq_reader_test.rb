@@ -32,9 +32,7 @@ class FastqReaderTest < Minitest::Test
   def test_it_can_return_percentage_of_sequences_over_30
     dir_name = ("read3")
     fastq = FastqReader.new(dir_name)
-    assert_equal , fastq.number_of_sequences
+    assert_equal [["read3/sample_2.fastq", 2, "%50"], ["read3/sample.fastq", 2, "%50"]], fastq.percent_seq_over_30
   end
-
-
   # report each file name and the percent of sequences in that file that are greater than 30 nucleotides long.
 end
