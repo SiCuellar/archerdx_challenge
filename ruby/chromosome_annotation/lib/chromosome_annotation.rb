@@ -36,4 +36,16 @@ class ChromosomeAnnotation
       chromosome_data.first.gsub("\n",'').split("\t")
     end
   end
+
+  def mapping_dictionary
+    mapping_data_dict = Hash.new(0)
+    mapping_data_grouper.each do |chromosome_data|
+      if mapping_data_dict[chromosome_data.first] != 0
+        mapping_data_dict[chromosome_data.shift] << chromosome_data
+      else
+        mapping_data_dict[chromosome_data.shift] = [chromosome_data]
+      end
+    end
+    mapping_data_dict
+  end
 end

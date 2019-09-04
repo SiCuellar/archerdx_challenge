@@ -29,4 +29,11 @@ class ChromosomeAnnotationTest < Minitest::Test
     assert_equal "16636091", chromosome_annotation.mapping_data_grouper.first[3]
   end
 
+  def test_form_mapping_data_dictionary
+    chromosome_annotation = ChromosomeAnnotation.new("coords_to_ann.txt","test_chromosome_map.gtf")
+    assert_equal ["chr3"], chromosome_annotation.mapping_dictionary.keys
+    assert_equal "refFlat", chromosome_annotation.mapping_dictionary.values.first.first[0]
+    assert_equal "16636091", chromosome_annotation.mapping_dictionary.values.first.first[2]
+  end
+
 end
