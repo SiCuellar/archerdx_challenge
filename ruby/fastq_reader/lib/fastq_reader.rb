@@ -9,27 +9,27 @@ class FastqReader
   end
 
   def select_directory_files
-    files = Dir.glob("#{@directory}/*.fastq")
+    directories = Dir.glob("**/*.fastq")
+    files = directories.find_all { |path| path.include?(@directory) }
   end
-
 
   def percent_seq_over_30
     percents_list = select_directory_files.map do |file|
-
-      file_data = File.readlines(file)
-      sequences = file_data.each_slice(4).to_a
+      sequences = grouped_sequences(file)
       above_30_count = 0
-
-      sequences.map do |sequence|
+      sequences.each do |sequence|
         if sequence[1].length > 30
           above_30_count +=1
         end
       end
-
-      num_seq = sequences.count
-      percent = above_30_count.to_f/num_seq.to_f * 100.0
+      percent = above_30_count.to_f/sequences.count.to_f * 100.0
     end
     directory_data = select_directory_files.zip(percents_list)
+  end
+
+  def grouped_sequences(file)
+    file_data = File.readlines(file)
+    sequences = file_data.each_slice(4).to_a
   end
 
   def data_display
