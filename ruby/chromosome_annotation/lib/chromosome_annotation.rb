@@ -48,4 +48,27 @@ class ChromosomeAnnotation
     end
     mapping_data_dict
   end
+
+  def annotate
+    complementary_data_set = Hash.new(0)
+    analyzing_dictionary.map do |key,value|
+      range_data_comparison(mapping_dictionary[key],value)
+      binding.pry
+    end
+    # binding.pry
+  end
+
+  def range_data_comparison(specific_chromosome_mapping_data, wanted_coords)
+    # binding.pry
+    matching = []
+    wanted_coords.each do |coord|
+      ranges = specific_chromosome_mapping_data.map do |chrom_data|
+        range = (chrom_data[2].to_i)..(chrom_data[3].to_i)
+        if range.include?(coord.to_i)
+            matching << [coord, chrom_data]
+        end
+      end
+    end
+    matching
+  end
 end
