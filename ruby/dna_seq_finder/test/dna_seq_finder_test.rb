@@ -26,7 +26,14 @@ class DnaSequenceFinderTest < Minitest::Test
   end
 
   def test_it_can_return_ten_most_frequent_sequences
-    dna_seq_finder = DnaSequenceFinder.new("sample_1.fasta")
+    dna_seq_finder = DnaSequenceFinder.new("sample_4.fasta")
     assert_equal 10, dna_seq_finder.most_frequent_seq.count
   end
+
+  #add testing to test that file has actually changed
+  def test_it_can_write_to_existing_file
+    dna_seq_finder = DnaSequenceFinder.new("sample.fasta")
+    dna_seq_finder.file_update
+  end
+
 end
