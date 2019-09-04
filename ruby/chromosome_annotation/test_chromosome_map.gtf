@@ -1,0 +1,4 @@
+chr3	refFlat	intron	16636091	16636821	.	-	.	gene_id "DAZL"; transcript_id "NM_001190811"; exon_number "7"; exon_id "NM_001190811.5"; gene_name "DAZL";
+chr3	refFlat	exon	16636821	16636893	.	-	.	gene_id "DAZL"; transcript_id "NM_001190811"; exon_number "7"; exon_id "NM_001190811.5"; gene_name "DAZL";
+chr3	refFlat	intron	16636893	16638257	.	-	.	gene_id "DAZL"; transcript_id "NM_001190811"; exon_number "6"; exon_id "NM_001190811.6"; gene_name "DAZL";
+chr3	refFlat	exon	16638257	16638397	.	-	.	gene_id "DAZL"; transcript_id "NM_001190811"; exon_number "6"; exon_id "NM_001190811.6"; gene_name "DAZL";
