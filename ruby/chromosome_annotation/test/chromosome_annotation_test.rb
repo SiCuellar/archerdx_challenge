@@ -36,10 +36,11 @@ class ChromosomeAnnotationTest < Minitest::Test
     assert_equal "16636091", chromosome_annotation.mapping_dictionary.values.first.first[2]
   end
 
+  #Make the test Below in a better way
   def test_it_can_compare_both_dictionaries
     chromosome_annotation = ChromosomeAnnotation.new("coords_to_ann.txt","test_chromosome_map.gtf")
-    # binding.pry
-    assert_equal ["chr3"], chromosome_annotation.annotate
+    assert_equal ["chr3"], chromosome_annotation.annotate.keys
+    assert_equal "16636095", chromosome_annotation.annotate.values[0].first.first
   end
 
 end

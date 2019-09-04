@@ -52,10 +52,9 @@ class ChromosomeAnnotation
   def annotate
     complementary_data_set = Hash.new(0)
     analyzing_dictionary.map do |key,value|
-      range_data_comparison(mapping_dictionary[key],value)
-      binding.pry
+      complementary_data_set[key] = range_data_comparison(mapping_dictionary[key],value)
     end
-    # binding.pry
+    complementary_data_set
   end
 
   def range_data_comparison(specific_chromosome_mapping_data, wanted_coords)
