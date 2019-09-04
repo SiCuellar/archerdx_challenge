@@ -58,7 +58,6 @@ class ChromosomeAnnotation
   end
 
   def range_data_comparison(specific_chromosome_mapping_data, wanted_coords)
-    # binding.pry
     matching = []
     wanted_coords.each do |coord|
       ranges = specific_chromosome_mapping_data.map do |chrom_data|
@@ -69,5 +68,11 @@ class ChromosomeAnnotation
       end
     end
     matching
+  end
+
+  def create_annotated_file
+    File.open("annotated.txt", "w") do |file|
+      file.write("add my annoate method here")
+    end
   end
 end

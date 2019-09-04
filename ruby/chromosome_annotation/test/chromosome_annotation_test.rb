@@ -36,11 +36,16 @@ class ChromosomeAnnotationTest < Minitest::Test
     assert_equal "16636091", chromosome_annotation.mapping_dictionary.values.first.first[2]
   end
 
-  #Make the test Below in a better way
+  #Make the test Below better way
   def test_it_can_compare_both_dictionaries
     chromosome_annotation = ChromosomeAnnotation.new("coords_to_ann.txt","test_chromosome_map.gtf")
     assert_equal ["chr3"], chromosome_annotation.annotate.keys
     assert_equal "16636095", chromosome_annotation.annotate.values[0].first.first
+  end
+
+  def test_it_can_write_annotated_file_of_gene_with_overlap_positions
+    chromosome_annotation = ChromosomeAnnotation.new("coords_to_ann.txt","test_chromosome_map.gtf")
+    chromosome_annotation.create_annotated_file
   end
 
 end
