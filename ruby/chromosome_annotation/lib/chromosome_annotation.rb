@@ -70,9 +70,31 @@ class ChromosomeAnnotation
     matching
   end
 
+  def filter_gene_name(gene_data)
+    attributes = gene_data.each_slice(1).to_a.last
+    gene_atts = attributes.join.split(";").last.gsub("\"", " ")
+    gene_name =gene_atts.split.last
+  end
+
+  def filter_gene_coords(gene_data)
+    range = "#{gene_data[2]} to #{gene_data[3]}"
+  end
+
   def create_annotated_file
     File.open("annotated.txt", "w") do |file|
-      file.write("add my annoate method here")
+      file.write("Chromosome Annotation for #{@chromosome_map_file}")
+      annotate.each do |key, values|
+        file.puts "Chromosome#: #{key}"
+        file.puts "\n"
+        values.each do |value|
+          file.puts " Target Coordinates: #{value.first}"
+          file.puts "Gene Name: #{filter_gene_name(value.last)}"
+          file.puts "Gene Range: #{filter_gene_coords(value.last)}"
+          file.puts "Source: #{(value.last.first)}"
+          file.puts "Feature: #{(value.last[1])}"
+          file.puts "\n"
+        end
+      end
     end
   end
 end
