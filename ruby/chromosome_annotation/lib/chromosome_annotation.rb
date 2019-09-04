@@ -30,4 +30,10 @@ class ChromosomeAnnotation
     end
   end
 
+  def mapping_data_grouper
+    multi_chromosome_data = @data_chromosome_map_file.each_slice(1).to_a
+    multi_chromosome_data.map do |chromosome_data|
+      chromosome_data.first.gsub("\n",'').split("\t")
+    end
+  end
 end

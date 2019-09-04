@@ -24,4 +24,9 @@ class ChromosomeAnnotationTest < Minitest::Test
     assert_equal [["16636095", "16638267", "16638259"]], chromosome_annotation.analyzing_dictionary.values
   end
 
+  def test_it_can_grou_mapping_data
+    chromosome_annotation = ChromosomeAnnotation.new("coords_to_ann.txt","test_chromosome_map.gtf")
+    assert_equal "16636091", chromosome_annotation.mapping_data_grouper.first[3]
+  end
+
 end
