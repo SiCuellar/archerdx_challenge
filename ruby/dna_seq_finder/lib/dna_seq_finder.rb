@@ -20,9 +20,10 @@ class DnaSequenceFinder
     end
   end
 
-  def most_frequent_seq
+  def most_frequent_seq(range = 10)
+    true_range = range - 1
     sequences_count.sort_by do |seq_info|
       seq_info.last
-    end.reverse
+    end.reverse[0..true_range]
   end
 end

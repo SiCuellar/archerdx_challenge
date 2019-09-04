@@ -22,6 +22,11 @@ class DnaSequenceFinderTest < Minitest::Test
 
   def test_it_can_return_most_frequent_sequences
     dna_seq_finder = DnaSequenceFinder.new("sample_2.fasta")
-    assert_equal [["CGGC", 2], ["AGGC", 1]], dna_seq_finder.most_frequent_seq
+    assert_equal [["CGGC", 2], ["AGGC", 1]], dna_seq_finder.most_frequent_seq(2)
+  end
+
+  def test_it_can_return_ten_most_frequent_sequences
+    dna_seq_finder = DnaSequenceFinder.new("sample_1.fasta")
+    assert_equal 10, dna_seq_finder.most_frequent_seq.count
   end
 end
