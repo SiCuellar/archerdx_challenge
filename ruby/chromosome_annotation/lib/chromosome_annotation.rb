@@ -8,7 +8,6 @@ class ChromosomeAnnotation
     @analyzing_coordinates_file = analyzing_coordinates_file
     @data_analyzing_coordinates = File.readlines("input_files/#{analyzing_coordinates_file}")
     @chromosome_map_file = chromosome_map_file
-    # @data_chromosome_map_file = File.readlines(chromosome_map_file)
     @data_chromosome_map_file = File.readlines("input_files/#{chromosome_map_file}")
   end
 
@@ -84,7 +83,7 @@ class ChromosomeAnnotation
   end
 
   def create_annotated_file
-    File.open("annotated_files/annotated_#{@chromosome_map_file}.txt", "w") do |file|
+    File.open("annotated_files/annotated_#{@chromosome_map_file}_file.txt", "w") do |file|
       file.write("Chromosome Annotation for #{@chromosome_map_file}")
       annotate.each do |key, values|
         file.puts "Chromosome#: #{key}"
