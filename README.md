@@ -40,4 +40,4 @@ To run test enter the desired script as instructed above and run the __test/scri
 * Turing Portfolio [click here](https://alumni.turing.io/alumni/silvestre-cuellar)
 
 
-[](https://media.giphy.com/media/dWIL4na2N5OtBe8AqN/giphy.gif)
+![](https://media.giphy.com/media/xUA7bazBa69nSu6lPy/giphy.gif)
