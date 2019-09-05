@@ -35,5 +35,4 @@ class DnaSequenceFinderTest < Minitest::Test
     dna_seq_finder = DnaSequenceFinder.new("sample.fasta")
     dna_seq_finder.file_update
   end
-
 end
