@@ -47,5 +47,4 @@ class ChromosomeAnnotationTest < Minitest::Test
     chromosome_annotation = ChromosomeAnnotation.new("coords_to_ann.txt","test_chromosome_map.gtf")
     chromosome_annotation.create_annotated_file
   end
-
 end

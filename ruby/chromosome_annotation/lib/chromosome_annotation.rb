@@ -6,9 +6,10 @@ class ChromosomeAnnotation
 
   def initialize(analyzing_coordinates_file, chromosome_map_file)
     @analyzing_coordinates_file = analyzing_coordinates_file
-    @data_analyzing_coordinates = File.readlines(analyzing_coordinates_file)
+    @data_analyzing_coordinates = File.readlines("input_files/#{analyzing_coordinates_file}")
     @chromosome_map_file = chromosome_map_file
-    @data_chromosome_map_file = File.readlines(chromosome_map_file)
+    # @data_chromosome_map_file = File.readlines(chromosome_map_file)
+    @data_chromosome_map_file = File.readlines("input_files/#{chromosome_map_file}")
   end
 
   def analyzing_dictionary
@@ -60,10 +61,12 @@ class ChromosomeAnnotation
   def range_data_comparison(specific_chromosome_mapping_data, wanted_coords)
     matching = []
     wanted_coords.each do |coord|
-      ranges = specific_chromosome_mapping_data.map do |chrom_data|
-        range = (chrom_data[2].to_i)..(chrom_data[3].to_i)
-        if range.include?(coord.to_i)
-            matching << [coord, chrom_data]
+      if specific_chromosome_mapping_data != 0
+        ranges = specific_chromosome_mapping_data.map do |chrom_data|
+          range = (chrom_data[2].to_i)..(chrom_data[3].to_i)
+          if range.include?(coord.to_i)
+              matching << [coord, chrom_data]
+          end
         end
       end
     end
@@ -81,7 +84,7 @@ class ChromosomeAnnotation
   end
 
   def create_annotated_file
-    File.open("annotated.txt", "w") do |file|
+    File.open("annotated_files/annotated_#{@chromosome_map_file}.txt", "w") do |file|
       file.write("Chromosome Annotation for #{@chromosome_map_file}")
       annotate.each do |key, values|
         file.puts "Chromosome#: #{key}"
