@@ -3,7 +3,7 @@ require "pry"
 class DnaSequenceFinder
   def initialize(fasta_file_name)
     @fasta_file_name = fasta_file_name
-    @data = File.readlines(fasta_file_name)
+    @data = File.readlines("fasta_files/#{fasta_file_name}")
   end
 
   def sequences_count
@@ -30,7 +30,7 @@ class DnaSequenceFinder
 
   #Must add safegaurd so File_update isn't run on the same file multiple times
   def file_update
-    File.open(@fasta_file_name, "a") do |file|
+    File.open("fasta_files/#{@fasta_file_name}", "a") do |file|
         file.puts "\n"
         file.puts "Most Frequent Sequences"
       most_frequent_seq(range = 10).each do |seq|

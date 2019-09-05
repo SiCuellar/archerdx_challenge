@@ -10,7 +10,8 @@ puts "\n"
 data = FastqReader.new(directory)
 if data.data_display == []
   puts "Invalid File"
-else data.data_display
+else
+  data.data_display
 end
 
 puts "Thanks for using FastQ file reader"
